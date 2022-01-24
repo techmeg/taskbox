@@ -1,14 +1,14 @@
 import React from "react";
 import * as TaskStories from "./Task.stories";
-import TaskList from "./TaskList";
+import { PureTaskList } from "./TaskList";
 
 export default {
-  component: TaskList,
-  title: "TaskList",
+  component: PureTaskList,
+  title: "PureTaskList",
   decorators: [(story) => <div style={{ padding: "3rem" }}>{story()}</div>],
 };
 
-const Template = (args) => <TaskList {...args} />;
+const Template = (args) => <PureTaskList {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -25,8 +25,8 @@ Default.args = {
 export const WithPinnedTasks = Template.bind({});
 WithPinnedTasks.args = {
   tasks: [
-    { id: "6", title: "Task 6 (pinned)", state: "TASK_PINNED" },
     ...Default.args.tasks.slice(0, 5),
+    { id: "6", title: "Task 6 (pinned)", state: "TASK_PINNED" },
   ],
 };
 
