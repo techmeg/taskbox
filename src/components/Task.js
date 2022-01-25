@@ -23,7 +23,13 @@ export default function Task({
         />
       </label>
       <div className='title'>
-        <input type='text' value={title} readOnly={true} />
+        <input
+          type='text'
+          value={title}
+          readOnly={true}
+          placeholder='Input title'
+          style={{ background: "aqua" }}
+        />
       </div>
       <div className='actions' onClick={(event) => event.stopPropagation()}>
         {state !== "TASK_ARCHIVED" && (
