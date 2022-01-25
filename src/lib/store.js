@@ -1,5 +1,18 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
+// error field configured here
+const AppStateSlice = createSlice({
+  name: "appState",
+  initialState: "",
+  reducers: {
+    updateAppState: (state, action) => {
+      return {
+        ...state,
+        isError: action.payload,
+      };
+    },
+  },
+});
 /*
  * The initial state of the store when the app loads.
  * Usually you would fetch from server.
@@ -30,8 +43,8 @@ const TasksSlice = createSlice({
   },
 });
 // The actions contained in the slice are exported for usage in our components
-export const { updateTasksState } = TasksSlice.actions;
-
+export const { updateTaskState } = TasksSlice.actions;
+export const { updateAppState } = AppStateSlice.actions;
 /*
  * Our app's store configuration goes here.
  * Read more about Redux's configureStore in the docs:
@@ -40,6 +53,7 @@ export const { updateTasksState } = TasksSlice.actions;
 const store = configureStore({
   reducer: {
     tasks: TasksSlice.reducer,
+    isError: AppStateSlice.reducer,
   },
 });
 
